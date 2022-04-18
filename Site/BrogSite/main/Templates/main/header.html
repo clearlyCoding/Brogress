@@ -1,0 +1,27 @@
+<head>
+	 <!-- Compiled and minified CSS -->
+   {% load static %}
+    <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href=" {% static 'main/css/materialize.css' %}" media="screen,projection">
+    <!-- Compiled and minified JavaScript -->
+   <script type = "text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>    
+    <script src=" {% static 'main/js/bin/materialize.min.js' %}"></script>
+
+ </head>
+
+<body><div class = "container" >
+{% include "main/includes/navbar.html" %}
+
+{% include "main/includes/messages.html" %}
+
+
+
+  <br>
+ {% block content %}
+ {% endblock %}
+</div>
+
+
+</body>	
+

@@ -1,0 +1,88 @@
+{% extends "main/header.html" %}
+
+{% block content%}
+{% block content%}
+<div class="row">
+	{% for obj in acrape %}
+		<div class="col s12 m10 l2" >
+		  <div class="card" >
+		    <div class="card-image waves-effect waves-block waves-light">
+		      <img class="activator" src=" {{obj.Scrape_url}} ">
+		    </div>
+		    <div class="card-content">
+		      <span class="card-title activator grey-text text-darken-4">{{obj.Scrape_weight}} {% if obj.Scrape_len %} in {{obj.Scrape_len}} {% endif %} <i class="material-icons right">More</i></span>
+		      <p><a href="{{obj.Scrape_pid}}">{{obj.Scrape_gender}} {{obj.Scrape_age}} {{obj.Scrape_height}}</a></p>
+		    </div>
+		    <div class="card-reveal">
+		      <span class="card-title grey-text text-darken-4">{{obj.Scrape_weight}} {% if obj.Scrape_len %} in {{obj.Scrape_len}} {% endif %}<i class="material-icons right">X</i></span>
+		      <p>
+		      	{% if obj.Scrape_coms %}
+		      		{{obj.Scrape_coms}}
+		      	{% else %}
+		      		Check out the link below for more!
+		      		<a href="{{obj.Scrape_pid}}">{{obj.Scrape_gender}} {{obj.Scrape_age}} {{obj.Scrape_height}}</a>
+		      	{% endif %}
+		      </p>
+		    </div>
+		  </div>
+		</div>
+	{% endfor %}
+</div>
+{% endblock %}
+###################################Try 2
+
+
+{% block content%}
+<div class="row">
+	{% for obj in acrape %}
+		<div class="col s4 m4 l4">
+			<div class="card">
+				<div class="card-image">
+					<img src="###REMOVEETHISATLAUNCH### {{obj.Scrape_url}}">
+					<span class="card-title"></span>
+				</div>
+				<div class="card-content">
+					<p style = "font-size:200%">
+					{{obj.Scrape_weight}} 
+					{%if obj.Scrape_len %} 
+						in {{obj.Scrape_len}} 
+					{% endif %}
+					</p>
+					<p>{{obj.Scrape_gender}} {{obj.Scrape_age}} {{obj.Scrape_height}}</p>
+					{% if obj.Scrape_coms %} 
+					<div class = "flow-text" style="font-size: 100%"><p>
+						{{obj.Scrape_coms}}
+					</p></div>
+					{% endif %}
+				</div>
+				
+				
+				<div align="right" style="font-size:80%"> 
+					{{obj.Scrape_date}} 
+				</div>
+				<div class="card-action">
+					<a href="{{obj.Scrape_pid}}">Reddit Page</a>
+				</div>
+			</div>
+		</div>
+	{% endfor %}
+</div>
+{% endblock %}
+ 
+
+ ########
+{% block content%}
+   <div class="carousel">
+   	{% for obj in acrape %}
+    	<a class="carousel-item" href="#one!"><img src={{obj.Scrape_url}}></a>
+    {% endfor %}
+    
+  </div>
+
+  <script>
+   document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.carousel');
+    var instances = M.Carousel.init(elems, options);
+  });
+ </script>
+  {% endblock %}

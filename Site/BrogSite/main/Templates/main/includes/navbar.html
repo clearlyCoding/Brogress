@@ -1,0 +1,14 @@
+
+<nav>
+  <div class="nav-wrapper">
+    
+    <a href="/" class="brand-logo Center">Shrogress</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      
+      {% if user.is_authenticated %}
+      <li><a href=/update>Update</a></li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
+

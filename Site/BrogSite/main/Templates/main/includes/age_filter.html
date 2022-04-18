@@ -1,0 +1,9 @@
+
+{% block content%}
+
+ <form method="POST">
+    {% csrf_token %}
+    {{ age_f.as_p }}<button class = "btn" type="submit"> See Mans lik u </button>
+  </form>
+
+ {% endblock %}

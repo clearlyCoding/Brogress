@@ -1,0 +1,103 @@
+{% extends "main/header.html" %}
+
+{% block content%}
+
+
+
+
+<div class= "row">
+	<div class = "col s4"></div>
+	<div class = "col s4">
+		  <ul class="collapsible">
+		    <li>
+		      <div class="collapsible-header" align="center"><i class="material-icons">contacts</i>See Bros Like You!</div>
+		      <div class="collapsible-body"><span>{% include 'main/includes/age_filter.html' %}</span></div>
+		    </li>
+		    </ul>						
+	</div>
+	<div class= "col s4"></div>
+</div>
+
+	{% if not Entries %}
+		<div class="row"><div class="col s4"></div><div class="col s4">
+		<div class = "card-panel"> <center><h2>Sorry boss, you're too special</h2>
+		<a href="/" class="waves-effect waves-light btn">Take Me Home</a></center>
+		</div></div>
+		<div class="col s4"></div>
+	{% endif %}
+
+{% if Entries.has_other_pages %}
+<center>
+  <ul class="pagination">
+    {% if Entries.has_previous %}
+      <li><a href="?page={{ Entries.previous_page_number }}"><i class="material-icons">chevron_left</i></a></li>
+    {% else %}
+     	<li class="disabled"><i class="material-icons">chevron_left</i></a></li>
+    {% endif %}
+
+	{% if Entries.number|add:'-4' > 1 %}
+    	<li><a href="?page={{ Entries.number|add:'-5' }}">&hellip;</a></li>
+	{% endif %}
+
+
+    {% for i in Entries.paginator.page_range %}
+      {% if Entries.number == i %}
+        <li class="active"><a href="?page={{ i }}">{{ i }}</a></li>
+      {% elif i > Entries.number|add:'-5' and i < Entries.number|add:'5' %}
+        <li class="waves-effect"><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    
+    {% if Entries.paginator.num_pages > Entries.number|add:'4' %}
+    	<li><a href="?page={{ Entries.number|add:'5' }}">&hellip;</a></li>
+	{% endif %}
+
+
+    {% if Entries.has_next %}
+      <li class="waves-effect"><a href="?page={{ Entries.next_page_number }}"><i class="material-icons">chevron_right</i></a></li>
+    {% else %}
+      <li class="disabled"><i class="material-icons">chevron_right</i></a></li>
+    {% endif %}
+  </ul>
+</center>
+{% endif %}
+
+<div class="row">
+	{% for obj in Entries %}
+		<div class="col s6 m8 l4 " >
+		  <div class="card large" >
+		    <div class="card-image waves-effect waves-block waves-light">
+		      <img class="activator" src="{{obj.Scrape_url}} " >
+		    </div>
+		    <div class="card-content">
+		      <span class="card-title activator grey-text text-darken-4">{{obj.Scrape_weight}} {% if obj.Scrape_len %} in {{obj.Scrape_len}} {% endif %} <i class="material-icons right">more_vert</i></span>
+		      <p><a href="{{obj.Scrape_pid}}">{{obj.Scrape_gender}} {{obj.Scrape_age}} {{obj.Scrape_height}}</a></p>
+		    </div>
+		    <div class="card-reveal">
+		      <span class="card-title grey-text text-darken-4">{{obj.Scrape_weight}} {% if obj.Scrape_len %} in {{obj.Scrape_len}} {% endif %}<i class="material-icons right">close</i></span>
+		      <p>
+		      	{% if obj.Scrape_coms %}
+		      		{{obj.Scrape_coms}}
+		      	{% else %}
+		      		Check out the link below for more!
+		      		<a href="{{obj.Scrape_pid}}">{{obj.Scrape_gender}} {{obj.Scrape_age}} {{obj.Scrape_height}}</a>
+		      	{% endif %}
+		      </p>
+		    </div>
+		  </div>
+		</div>
+
+	{% endfor %}
+
+</div>
+
+
+<script type ="text/javascript">  
+	document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.collapsible');
+    var instances = M.Collapsible.init(elems, true);
+  });
+</script>
+
+
+{% endblock %}
