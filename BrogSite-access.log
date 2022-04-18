@@ -1,3 +1,0 @@
-68.194.112.101 - - [23/Dec/2020:19:44:22 +0000] "GET / HTTP/1.1" 400 386 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.101 Safari/537.36"
-68.194.112.101 - - [23/Dec/2020:19:44:27 +0000] "GET /admin HTTP/1.1" 400 386 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.101 Safari/537.36"
-68.194.112.101 - - [23/Dec/2020:19:44:31 +0000] "GET /update HTTP/1.1" 400 386 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.101 Safari/537.36"
